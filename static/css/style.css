@@ -123,3 +123,7 @@ div.info{
 .profile-info .table{
 	margin-top: 30px;
 }
+
+.panel-body{
+	background-color: #ffffc7;
+}
