@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../static/css/bootstrap.css">
   <link rel="stylesheet" href="../static/css/style.css">
+  {% load static %}
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="../static/js/bootstrap.js"></script>
 </head>
@@ -14,17 +17,17 @@
     <a class="navbar-brand" href="index.html">
         <img alt="Brand" src="../static/images/logo.jpg"  width="40px">
     </a>
-  <ul>
-    <li class="menu-item active">
-      <a href="index.html">Main</a>
-    </li>
-    <li class="menu-item">
-      <a href="contact.html">Contacts</a>
-    </li>
-    <li class="menu-item active">
-        <a href="student_list.html">Students</a>
+  <ul class="list-unstyled">
+      <li class="menu-item">
+        <a href="{% url 'index' %}">Main</a>
       </li>
-  </ul>
+      <li class="menu-item active">
+        <a href="{% url 'contact' %}">Contacts</a>
+      </li>
+      <li class="menu-item active">
+        <a href="{% url 'student_list' %}">Students</a>
+      </li>
+    </ul>
 </nav>
 <div class="container">
   <div class="row">
