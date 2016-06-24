@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>student-profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="menu-item">
+        <a href="{% url 'index' %}">Main</a>
+      </li>
+      <li class="menu-item">
+        <a href="{% url 'contact' %}">Contacts</a>
+      </li>
+      <li class="menu-item active">
+        <a href="{% url 'students:list_view' %}">Students</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="main-container">
+    <div class="student-details">
+      <table>
+        <tbody>
+          <tr>
+            <td>имя:</td>
+            <td>
+              {{student.name}} {{student.surname}}
+            </td>
+          </tr>
+          <tr>
+            <td>дата рождения:</td>
+            <td>
+              {{student.date_of_birth|date:"N j, Y"}}
+            </td>
+          </tr>
+          <tr>
+            <td>адрес:</td>
+            <td>
+              {{student.address}}
+            </td>
+          </tr>
+          <tr>
+            <td>ел. почта</td>
+            <td>
+              {{student.email}}
+            </td>
+          </tr>
+          <tr>
+            <td>skype:</td>
+            <td>
+              {{student.skype}}
+            </td>
+          </tr>
+          <tr>
+            <td>телефон:</td>
+            <td>
+              {{student.phone}}
+            </td>
+          </tr>
+          <tr>
+            <td>курсы</td>
+            <td>
+              {% for course in courses %}
+              <a href="{% url 'courses:detail' course.id %}">
+                {{course.name}}
+                <br>
+              </a>
+              {% endfor %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
