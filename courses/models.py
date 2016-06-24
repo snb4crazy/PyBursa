@@ -9,6 +9,9 @@ class Course(models.Model):
     def __unicode__(self):
         return self.name
 
+    def __str__(self):
+        return self.name
+
 
 class Lesson(models.Model):
     subject = models.CharField(max_length=100)
@@ -17,5 +20,8 @@ class Lesson(models.Model):
     order = models.PositiveIntegerField()
 
     def __unicode__(self):
+        return self.subject
+
+    def __str__(self):
         return self.subject
 
