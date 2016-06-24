@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'^student_list/$', views.student_list, name="student_list"),
     url(r'^student_details/$', views.student_details, name="student_details"),
     url(r'^quadratic/', include('quadratic.urls')),
+    url(r'^courses/', include('courses.urls', namespace="courses")),
+    url(r'^students/', include('students.urls', namespace="students")),
 ]
