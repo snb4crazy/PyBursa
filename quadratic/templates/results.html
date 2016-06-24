@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HomeWOrk #4: Quadratic app</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="../static/js/bootstrap.js"></script>
+</head>
+<body>
+  <div class="container">
+      <h1 class="text-center">Equation</h1>
+      <div class="form-wrapper">
+          {% load type %}
+          {% block content %}
+            Квадратное уравнение a*x*x+b*x+c=0
+            <ul>
+                {% for k, v in data %}
+                    <li>{{k}} = {{v}}</li>
+                    {% if k == 'a' and v == 0 %}
+                        коэффициент при первом слагаемом уравнения не может быть равным нулю
+                    {% elif v == '' %}
+                        коэффициент не определен
+                    {% elif not v|get_type %}
+                        коэффициент не целое число
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if d|get_type %}
+                Дискриминант: {{d}}<br/>
+                {% if d == 0 %}
+                    Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = {{x1|floatformat:1}}
+                {% elif d and d < 0 %}
+                    Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.
+                {% elif d and d > 0 %}
+                    Квадратное уравнение имеет два действительных корня: x1 = {{x1|floatformat:1}}, x2 = {{x2|floatformat:1}}
+                {% endif %}
+            {% endif %}
+          {% endblock %}
+      </div>
+  </div>
+</body>
+</html>
