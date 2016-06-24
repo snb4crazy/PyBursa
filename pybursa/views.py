@@ -13,5 +13,5 @@ def student_list(request):
     return render(request, 'student_list.html')
 
 
-def student_detail(request):
-    return render(request, 'student_detail.html')
+def student_details(request):
+    return render(request, 'student_details.html')
