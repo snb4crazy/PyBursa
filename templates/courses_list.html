@@ -32,5 +32,54 @@
               </li>
             </ul>
         </nav>
+        <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-lg-push-1">
+            <div id="mainInfo" class="main-container text-center">
+              <h1>Join our PyBursa Family</h1>
+              <h4>Description</h4>
+              <p>
+                @todo put detailed description here
+              </p>
+              <hr/>
+            </div>
+            <div class="courses-list-wrapper">
+            <h5>
+              <img src="../static/images/logo.jpg" alt="logo">
+              <span>
+                Our courses:
+              </span>
+            </h5>
+              <table>
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% block content %}
+                {% for course in courses %}
+                <tr>
+                  <td>
+                    <a href="{% url 'courses:detail' course.id %}">
+                      {{course.name}}
+                    </a>
+                  </td>
+                  <td>
+                    {{course.short_description}}
+                  </td>
+                </tr>
+                {% endfor %}
+              {% endblock %}
+              </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
     </body>
 </html>

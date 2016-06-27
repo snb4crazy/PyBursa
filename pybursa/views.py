@@ -15,3 +15,7 @@ def student_list(request):
 
 def student_details(request):
     return render(request, 'student_details.html')
+
+
+def courses_list(request):
+    return render(request, 'courses_list.html')
