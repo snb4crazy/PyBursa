@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+    <head>
+      <title>PyBursa</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../static/css/bootstrap.css">
+      <link rel="stylesheet" href="../static/css/style.css">
+      {% load static %}
+      <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+      <link href="{% static 'css/style.css' %}" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <script src="../static/js/bootstrap.js"></script>
+    </head>
+    <body>
+        <nav>
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img alt="Brand" src="../static/images/logo.jpg"  width="40px">
+            </a>
+          <ul class="list-unstyled">
+              <li class="menu-item">
+                <a href="{% url 'index' %}">Main</a>
+              </li>
+              <li class="menu-item">
+                <a href="{% url 'courses_list' %}">Courses List</a>
+              </li>
+              <li class="menu-item active">
+                <a href="{% url 'contact' %}">Contacts</a>
+              </li>
+              <li class="menu-item active">
+                <a href="{% url 'student_list' %}">Students</a>
+              </li>
+            </ul>
+        </nav>
+    </body>
 </html>
