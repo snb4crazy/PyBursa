@@ -15,13 +15,13 @@
   <div class="container-fluid">
     <div class="navbar-header">
     <a class="navbar-brand" href="{% url 'index' %}">
-        <img alt="Brand" src="../static/images/small_logo.png"  width="40px">
+        <img alt="Brand" src="../../static/images/logo.jpg"  width="40px">
       </a>
     </div>
     <ul class="nav navbar-nav">
       <li><a href="{% url 'index' %}">Main</a></li>
       <li><a href="{% url 'contact' %}">Contacts</a></li>
-      <li class="active"><a href="{% url 'students:list_view' %}">Students</a></li>
+      <li class="active"><a href="{% url 'student_list' %}">Students</a></li>
     </ul>
   </div>
 </nav>
