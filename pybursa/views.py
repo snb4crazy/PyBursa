@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from courses.models import Course
 
 
 def index(request):
@@ -18,4 +19,4 @@ def student_details(request):
 
 
 def courses_list(request):
-    return render(request, 'courses_list.html')
+    return render(request, 'courses_list.html', {'courses': Course.objects.all()})
