@@ -1,5 +1,5 @@
 from django.contrib import admin
-from feedbacks.models import Feedback
+from .models import Feedback
 
 
 class FeedbackAdmin(admin.ModelAdmin):
