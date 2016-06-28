@@ -1,63 +1,39 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Students{% endblock title %}
-{% block nav_class_students %}active{% endblock %}
+{% block title %}{{ student.name }} {{ student.surname }}{% endblock title %}
+{% block nav_active_students %}active{% endblock %}
+
 {% block content %}
-<div class="container">
-  <div class="main-container">
-    <div class="student-details">
-      <table>
-        <tbody>
-          <tr>
-            <td>имя:</td>
-            <td>
-              {{student.name}} {{student.surname}}
-            </td>
-          </tr>
-          <tr>
-            <td>дата рождения:</td>
-            <td>
-              {{student.date_of_birth|date:"N j, Y"}}
-            </td>
-          </tr>
-          <tr>
-            <td>адрес:</td>
-            <td>
-              {{student.address}}
-            </td>
-          </tr>
-          <tr>
-            <td>ел. почта</td>
-            <td>
-              {{student.email}}
-            </td>
-          </tr>
-          <tr>
-            <td>skype:</td>
-            <td>
-              {{student.skype}}
-            </td>
-          </tr>
-          <tr>
-            <td>телефон:</td>
-            <td>
-              {{student.phone}}
-            </td>
-          </tr>
-          <tr>
-            <td>курсы</td>
-            <td>
-              {% for course in courses %}
-              <a href="{% url 'courses:detail' course.id %}">
-                {{course.name}}
-                <br>
-              </a>
-              {% endfor %}
-            </td>
-          </tr>
-        </tbody>
+  <h2 id = "header_table">{{ student.name }} {{ student.surname}}</h2>
+     <div class="table-responsive">
+      <table class="table table-striped">
+        <tr>
+            <td>Date Of Birth</td>
+            <td>{{ student.date_of_birth }}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{ student.address }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ student.email }}</td>
+        </tr>
+        <tr>
+            <td>Skype</td>
+            <td>{{ student.skype }}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{ student.phone }}</td>
+        </tr>
+        <tr>
+            <td>Courses</td>
+            <td> {% for course in student.courses.all %}
+                  <a href="{% url 'courses:detail' course.id %}">{{ course.name }}<br></a>
+            {% endfor %}</td>
+        </tr>
+
       </table>
     </div>
-  </div>
-</div>
 {% endblock content %}
