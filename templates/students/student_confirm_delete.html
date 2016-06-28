@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}{{ title }}{% endblock title %}
+{% block nav_active_students %}active{% endblock %}
+
+{% block content %}
+
+  <h2>Student {{ app.full_name }} would be removed!</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Remove!"/>
+  </form>
+
+{% endblock content %}
