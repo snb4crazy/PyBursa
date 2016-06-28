@@ -15,6 +15,7 @@ def detail(request, id):
 
 class StudentCreateView(CreateView):
     model = Student
+    fields = '__all__'
     success_url = reverse_lazy('students:list_view')
 
     def get_context_data(self, **kwargs):
@@ -30,6 +31,7 @@ class StudentCreateView(CreateView):
 
 class StudentUpdateView(UpdateView):
     model = Student
+    fields = '__all__'
     success_url = reverse_lazy('students:list_view')
     template_name_suffix = '_update_form'
 
@@ -46,6 +48,7 @@ class StudentUpdateView(UpdateView):
 
 class StudentDeleteView(DeleteView):
     model = Student
+    fields = '__all__'
     success_url = reverse_lazy('students:list_view')
 
     def get_context_data(self, **kwargs):
