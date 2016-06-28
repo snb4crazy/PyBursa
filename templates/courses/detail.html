@@ -1,44 +1,59 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}Students{% endblock title %}
-{% block nav_class_courses %}active{% endblock %}
+{% block title %}Course {{ course.name }}{% endblock title %}
+{% block course_students %}?course_id={{ course.id }}{% endblock course_students %}
+{% block nav_active_index %}active{% endblock %}
+
 {% block content %}
 
-{% include "include/coursedetail_include.html" %}
-<div class="container">
-        <div class="row">
-            <div class="main-container course-details">
-                <div>
-                <h4>
-                    {{cource.name}}
-                </h4>
-                {{cource.description}}
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Тема</th>
-                            <th>Описание</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for lesson in lessons %}
-                        <tr>
-                            <td>
-                                {{lesson.order}}
-                            </td>
-                            <td>
-                                {{lesson.subject}}
-                            </td>
-                            <td>
-                                {{lesson.description}}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+ {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+      <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    </div>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+    <div class="container">
+        <h1>{{ course.name }}</h1>
+    </div>
+    </div>
+      <div class="panel-body">
+        <p class = "text-info">{{ course.description|truncatechars:32 }}</p>
+      </div>
+    </div>
+    </div>
+
+   <div class="head">
+      <h2>Info About Course From Included HTML File</h2>
+      {% include "include/coursedetail_include.html" with block_title="Course Details" %}
+   </div>
+
+  <div class="head" style="width: 1120px;">
+  <!-- Default panel contents -->
+   	<h2>План курса</h2>
+        <p style="margin: 20px;">
+        <button><a href="{% url 'courses:add_lesson' course.id %}" style="text-decoration: none;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add New Lesson</a></button>
+      </p>
+      <div class="table-responsive">
+      <table class="table table-striped">
+        <tr>
+        	<th>#</th>
+        	<th>Theme</th>
+        	<th>Description</th>
+        </tr>
+      	{% for i in lessons %}
+        <tr>
+            <td>{{ i.order }}</td>
+			<td>{{ i.subject }}</td>
+			<td>{{ i.description }}</td>
+		</tr>
+		{% endfor %}
+      </table>
+    </div>
     </div>
 {% endblock content %}

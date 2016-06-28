@@ -3,7 +3,8 @@ from courses.models import Course
 
 
 def index(request):
-    return render(request, 'index.html')
+    courses = Course.objects.only('name', 'short_description', 'id')
+    return render(request, 'index.html', {"courses": courses})
 
 
 def contact(request):

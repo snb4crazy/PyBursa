@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Quadratic{% endblock title %}
+{% block nav_active_qudratic %}active{% endblock %}
+
+{% block content %}
+<p>Квадратное уравнение a*x*x + b*x + c = 0</p>
+
+<form method="get">
+  {{ form.as_p }}
+  <input type="submit" value="Решить"/>
+</form>
+
+  <p>{{disc.message}}{{disc.value}}</p>
+  <p>{{text_result.message}}{{text_result.value}}</p>
+
+{% endblock content %}
