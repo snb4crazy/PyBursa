@@ -5,6 +5,9 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.core.urlresolvers import reverse_lazy
 from students.models import Student
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def detail(request, id):
@@ -80,5 +83,9 @@ class StudentDetailView(DetailView):
     model = Student
 
     def get_context_data(self, **kwargs):
+        logger.debug('Students detail view has been debugged')
+        logger.info('Logger of students detail view informs you!')
+        logger.warning('Logger of students detail view warns you!')
+        logger.error('Students detail view went wrong!')
         context = super(StudentDetailView, self).get_context_data(**kwargs)
         return context
