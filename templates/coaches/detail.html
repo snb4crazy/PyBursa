@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}{{ coach.full_name }}{% endblock title %}
+{% block nav_active_index %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+<h2 id = "header_table">{{ coach.full_name }}</h2>
+ <div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+        <td>Date Of Birth</td>
+        <td>{{ coach.date_of_birth|date:"d F, Y" }}</td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td>{{ coach.address }}</td>
+    </tr>
+    <tr>
+        <td>Eamil</td>
+        <td>{{ coach.user.email }}</td>
+    </tr>
+    <tr>
+        <td>Skype</td>
+        <td>{{ coach.skype }}</td>
+    </tr>
+    <tr>
+        <td>Phone</td>
+        <td>{{ coach.phone }}</td>
+    </tr>
+    <tr>
+        <td>Courses Coaching</td>
+        <td> {% for i in courses %}
+              <a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a> студенты курса <a href="{% url 'students:list_view' %}{% block course_students %}?course_id={{ i.id }}{% endblock course_students %}"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a><br>
+              {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td>Courses Assisting</td>
+        <td> {% for i in assist_courses %}
+              <a href="{% url 'courses:detail' i.id %}">{{ i.name }}</a> студенты курса <a href="{% url 'students:list_view' %}{% block course_students_ass %}?course_id={{ i.id }}{% endblock course_students_ass %}"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a><br>
+              {% endfor %}
+        </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+{% endblock content %}
