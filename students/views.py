@@ -81,6 +81,7 @@ class StudentListView(ListView):
 
 class StudentDetailView(DetailView):
     model = Student
+    template_name = "students/detail.html"
 
     def get_context_data(self, **kwargs):
         logger.debug('Students detail view has been debugged')
