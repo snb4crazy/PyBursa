@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^courses/', include('courses.urls', namespace="courses")),
     url(r'^students/', include('students.urls', namespace="students")),
     url(r'^feedback/$', FeedbackView.as_view(), name='feedback'),
+    url(r'^coaches/', include('coaches.urls', namespace="coaches")),
 ]
