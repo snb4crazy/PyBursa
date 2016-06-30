@@ -1,0 +1,11 @@
+<div class="panel panel-success" style="margin-left: 20px; width: 1100px;">
+<div class="panel-heading">
+  <h4>{{ block_title }}</h4>
+</div>
+{% if  instructor %}
+<div class="panel-body">
+  <p class = "text-info"><a href= "{% url 'coaches:detail' instructor.id %}">{{ instructor.full_name }}</a></p>
+  <p class = "text-info">{{ instructor.description }}</p>
+</div>
+{% endif %}
+</div>

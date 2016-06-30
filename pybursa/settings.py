@@ -25,7 +25,7 @@ SECRET_KEY = 'h=16q@6!v8p(dw2n)u)ugwe$z)#$vrizvc0@husb7-t4iwf4lp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pybursa.proserge.kh.ua']
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'courses',
     'students',
     'feedbacks',
+    'coaches',
+    'mailer',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -170,3 +172,5 @@ LOGGING = {
         },
     },
 }
+
+EMAIL_BACKEND = "mailer.backend.DbBackend"

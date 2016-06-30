@@ -18,14 +18,19 @@
 
   <div class="panel panel-primary">
     <div class="panel-heading">
-    <div class="container">
-        <h1>{{ course.name }}</h1>
-    </div>
+        <div class="container">
+            <h1>{{ course.name }}</h1>
+        </div>
     </div>
       <div class="panel-body">
         <p class = "text-info">{{ course.description|truncatechars:32 }}</p>
       </div>
-    </div>
+  </div>
+
+    <div class="head">
+        <h2>Coaches & Assistants</h2>
+        {% include "include/instructor_include.html" with block_title="Coach" instructor=course.coach %}
+        {% include "include/instructor_include.html" with block_title="Assistant" instructor=course.assistant %}
     </div>
 
    <div class="head">
