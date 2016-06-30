@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'students',
     'feedbacks',
     'coaches',
+    'mailer',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -171,3 +172,5 @@ LOGGING = {
         },
     },
 }
+
+EMAIL_BACKEND = "mailer.backend.DbBackend"
