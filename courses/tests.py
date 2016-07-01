@@ -2,6 +2,8 @@ from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from courses.models import Course, Lesson
 from coaches.models import Coach
+from inspect import getmembers
+from pprint import pprint
 
 
 def create_course():
@@ -49,7 +51,7 @@ class CoursesListTest(TestCase):
     def test_head(self):
         client = Client()
         response = client.get('')
-        self.assertContains(response,u'ItBursa')
+        self.assertContains(response, u'Courses List')
 
     def test_use_rend(self):
         response = client.get('')
@@ -57,14 +59,15 @@ class CoursesListTest(TestCase):
 
     def test_html_active(self):
         response = client.get('')
-        self.assertContains(response,"""<li class=active><a href="/">Main</a></li>""", html=True)
+        #pprint(getmembers(response))
+        self.assertContains(response, """<h2>Pick The Course</h2>""", html=True)
 
 
 class CoursesDetailTest(TestCase):
 
     def test_detail_course(self):
         create_course()
-        response = client.get('/courses/1/')
+        response = client.get('/courses/2/')
         self.assertEqual(response.status_code, 200)
 
     def test_create_coach(self):
@@ -73,8 +76,8 @@ class CoursesDetailTest(TestCase):
 
     def test_title_course(self):
         create_course()
-        title = Course.objects.get(id=1).name
-        response = client.get('/courses/1/')
+        title = Course.objects.get(id=5).name
+        response = client.get('/courses/5/')
         self.assertContains(response, title)
 
     def test_create_lesson(self):
@@ -85,7 +88,7 @@ class CoursesDetailTest(TestCase):
     def test_list_lesson(self):
         create_course()
         create_course()
-        create_lesson(Course.objects.get(id=1))
-        create_lesson(Course.objects.get(id=1))
-        create_lesson(Course.objects.get(id=2))
-        self.assertEqual(Lesson.objects.all().filter(course=1).count(), 2)
+        create_lesson(Course.objects.get(id=4))
+        create_lesson(Course.objects.get(id=4))
+        create_lesson(Course.objects.get(id=3))
+        self.assertEqual(Lesson.objects.all().filter(course=4).count(), 2)
