@@ -9,13 +9,20 @@ def create_course():
                                  short_description="TEST test")
 
 
+def create_user():
+    return User.objects.create(id=1,
+                               username="Test",
+                               email="test@mail.com")
+
+
 def create_coach():
-    return Coach.objects.create(user=User(1, "Test", "Test", "test@mail.com"),
+    userCoach = create_user()
+    return Coach.objects.create(user=userCoach,
                                 date_of_birth="1989-01-01",
                                 phone="+3807",
                                 address="test",
                                 skype="test",
-                                gender='Male',
+                                gender='M',
                                 description="Test")
 
 
